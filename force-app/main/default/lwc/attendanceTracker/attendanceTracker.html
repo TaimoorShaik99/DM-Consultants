@@ -1,0 +1,99 @@
+<template>
+    <lightning-card title="Counsellor Assignment" icon-name="standard:user">
+        <div class="slds-m-around_medium">
+            <!-- Loading spinner -->
+            <template if:true={isLoading}>
+                <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+            </template>
+            
+            <!-- Error panel -->
+            <template if:true={error}>
+                <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
+                    <span class="slds-assistive-text">Error</span>
+                    <h2>{error}</h2>
+                </div>
+            </template>
+
+            
+            <!-- Attendance table -->
+            <template if:true={users.length}>
+                <div class="slds-table_header-fixed_container" style="height: auto;">
+                    <div class="slds-scrollable" style="height: 100%;">
+                        <table class="slds-table slds-table_bordered slds-table_fixed-layout slds-table_cell-buffer">
+                            <thead>
+                                <tr class="slds-line-height_reset">
+                                    <th scope="col" class="slds-cell-buffer_left">
+                                        <div class="slds-truncate" title="Counsellor">Counsellor</div>
+                                    </th>
+                                    <th scope="col">
+                                        <div class="slds-truncate" title="Present">Assignment</div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <template for:each={users} for:item="user">
+                                    <tr key={user.userId} class="slds-hint-parent attendance-item" data-present={user.present}>
+                                        <td class="slds-cell-buffer_left">
+                                            <div class="slds-grid slds-gutters">
+                                                <div class="slds-col slds-size_1-of-12">
+                                                    <div class="user-avatar">
+                                                        <lightning-icon icon-name="standard:user" size="small"></lightning-icon>
+                                                    </div>
+                                                </div>
+                                                <div class="slds-col slds-size_11-of-12">
+                                                    <div class="user-name">{user.name}</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="slds-grid slds-grid_align-center">
+                                                <lightning-input 
+                                                    type="toggle" 
+                                                    label="Present" 
+                                                    name={user.userId} 
+                                                    checked={user.present} 
+                                                    message-toggle-active="Assign" 
+                                                    message-toggle-inactive="Unassign"
+                                                    variant="label-hidden"
+                                                    class="toggle-present"
+                                                    onchange={handleToggleChange}>
+                                                </lightning-input>
+                                                <div class="slds-p-left_small">
+                                                    <span class={user.statusClass}>{user.statusLabel}</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </template>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+               
+
+                
+            </template>
+
+             <!-- Fixed Update Button -->
+                <div class="slds-m-top_medium slds-text-align_center fixed-update-btn">
+                    <lightning-button 
+                        label={submitButtonLabel} 
+                        variant="brand" 
+                        onclick={handleSubmit}>
+                    </lightning-button>
+                </div>
+            
+            <!-- No users message -->
+            <template if:false={users.length}>
+                <div class="empty-state">
+                    <div class="empty-state-icon">
+                        <lightning-icon icon-name="standard:people" size="large"></lightning-icon>
+                    </div>
+                    <h3 class="empty-state-heading">No Users Found</h3>
+                    <p class="empty-state-text">No eligible users found for attendance tracking.</p>
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>

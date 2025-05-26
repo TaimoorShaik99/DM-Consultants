@@ -1,0 +1,124 @@
+/* Card styling */
+.attendance-card {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+/* Table row styling */
+.attendance-item {
+    transition: background-color 0.2s ease;
+}
+
+.attendance-item:hover {
+    background-color: #f7f9fb;
+}
+
+/* Present status styling */
+.attendance-item[data-present="true"] {
+    border-left: 4px solid #04844b; /* Success green */
+}
+
+.attendance-item[data-present="false"] {
+    border-left: 4px solid #c23934; /* Error red */
+}
+
+/* Status label styles */
+.status-label {
+    border-radius: 4px;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+ .fixed-update-btn {
+     position: fixed;
+     left: 0;
+     right: 0;
+     bottom: 0;
+     z-index: 1000;
+     background: white;
+     padding: 1rem 0;
+     box-shadow: 0 -2px 8px rgba(0,0,0,0.08);
+ }
+
+.status-label.present {
+    background-color: #eefbef;
+    color: #04844b;
+}
+
+.status-label.absent {
+    background-color: #fef1ed;
+    color: #c23934;
+}
+
+/* User avatar */
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #f2f2f2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* User details */
+.user-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #16325c;
+}
+
+/* Toggle customization */
+.toggle-present .slds-checkbox_toggle .slds-checkbox_faux {
+    background-color: #c23934;
+}
+
+.toggle-present .slds-checkbox_toggle input:checked + .slds-checkbox_faux {
+    background-color: #04844b;
+}
+
+.toggle-present .slds-checkbox_toggle input:checked + .slds-checkbox_faux:hover,
+.toggle-present .slds-checkbox_toggle input:checked + .slds-checkbox_faux:focus {
+    background-color: #036c3c;
+}
+
+.toggle-present .slds-checkbox_toggle .slds-checkbox_faux:hover,
+.toggle-present .slds-checkbox_toggle .slds-checkbox_faux:focus {
+    background-color: #aa3530;
+}
+
+/* Empty state styling */
+.empty-state {
+    padding: 2rem;
+    text-align: center;
+}
+
+.empty-state-icon {
+    margin-bottom: 1rem;
+    width: 60px;
+    height: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #dddbda;
+}
+
+.empty-state-heading {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #3e3e3c;
+    margin-bottom: 0.5rem;
+}
+
+.empty-state-text {
+    color: #706e6b;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}

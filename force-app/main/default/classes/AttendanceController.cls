@@ -14,6 +14,7 @@ public with sharing class AttendanceController {
         } catch (Exception e) {
             throw new AuraHandledException('Error retrieving attendance records: ' + e.getMessage());
         }
+        // 
     }
 
     /**
